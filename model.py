@@ -74,7 +74,7 @@ class Igra:
 with open("besede.txt", "r", encoding= "utf-8") as besede:
     bazen_besed = []
     for vrstica in besede:
-        bazen_besed.append(vrstica)
+        bazen_besed.append(vrstica.upper().strip())
 
 def nova_igra():
     return Igra(choice(bazen_besed))
