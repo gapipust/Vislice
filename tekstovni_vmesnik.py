@@ -25,18 +25,19 @@ def pozeni_vmesnik():
     igra = nova_igra()
     while True:
         crka = zahtevaj_vnos()
-        if igra.ugibaj(crka) = PONOVLJENA_CRKA:
-            print(Ta črka je že bila izbrana. Izberite drugo črko!)
+        rezultat = igra.ugibaj(crka)
+        if rezultat == PONOVLJENA_CRKA:
+            print("Ta črka je že bila izbrana. Izberite drugo črko!")
             izpis_igre(igra)
-        elif igra.ugibaj(crka) = ZMAGA:
-            break
+        elif rezultat == ZMAGA:
             izpis_zmage(igra)
-        elif igra.ugibaj(crka) = PORAZ:
             break
+        elif rezultat == PORAZ:
             izpis_poraza(igra)
-        elif igra.ugibaj(crka) = PRAVILNA_CRKA:
+            break
+        elif rezultat == PRAVILNA_CRKA:
             igra.pravilne_crke().append(crka)
             izpis_igre(igra)
-        elif igra.ugibaj(crka) = NAPACNA_CRKA:
+        elif rezultat == NAPACNA_CRKA:
             igra.napacne_crke().append(crka)
             izpis_igre(igra)
