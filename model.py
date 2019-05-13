@@ -1,3 +1,5 @@
+from random import choice
+
 STEVILO_DOVOLJENIH_NAPAK = 10
 PRAVILNA_CRKA = "+"
 PONOVLJENA_CRKA = "0"
@@ -6,7 +8,7 @@ ZMAGA = "W"
 PORAZ = "X"
 class Igra:
     def __init__(self, beseda, crke=None):
-        geslo = beseda
+        self.geslo = beseda
         if crke == None:
             self.crke = []
         else: 
@@ -54,11 +56,11 @@ class Igra:
             nepravilni_ugibi += " " + crka
         return nepravilni_ugibi
 
-    def ugibaj(crka):
+    def ugibaj(self, crka):
         velika_crka = crka.upper()
         if velika_crka in self.crke:
             return PONOVLJENA_CRKA
-        elif velika_crka in self.geslo
+        elif velika_crka in self.geslo:
             if self.zmaga():
                 return ZMAGA
             else:
@@ -69,3 +71,10 @@ class Igra:
             else:
                 return NAPACNA_CRKA
 
+with open("besede.txt", "r", encoding= "utf-8") as besede:
+    bazen_besed = []
+    for vrstica in besede:
+        bazen_besed.append(vrstica)
+
+def nova_igra():
+    return Igra(choice(bazen_besed))
