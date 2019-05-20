@@ -97,5 +97,6 @@ class Vislice:
         return id_igre
 
     def ugibaj(self, id_igre, crka):
-        ugibaj = self.igre[id_igre][0].ugibaj(crka)
-        self.igre[id_igre] = (igra, ugibaj)
+        igra = self.igre[id_igre][0]
+        stanje = igra.ugibaj(crka)
+        self.igre[id_igre] = (igra, stanje)
