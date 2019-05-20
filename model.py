@@ -6,6 +6,7 @@ PONOVLJENA_CRKA = "0"
 NAPACNA_CRKA = "-"
 ZMAGA = "W"
 PORAZ = "X"
+ZACETEK = "S"
 class Igra:
     def __init__(self, beseda, crke=None):
         self.geslo = beseda
@@ -78,3 +79,23 @@ with open("besede.txt", "r", encoding= "utf-8") as besede:
 
 def nova_igra():
     return Igra(choice(bazen_besed))
+
+class Vislice:
+    def __init__(self):
+        self.igre = {}
+
+    def prost_id_igre(self):
+        if self.igre == {}:
+            return 0
+        else:
+            return max(self.igre.keys()) + 1
+    
+    def nova_igra(self):
+        igra = nova_igra()
+        id_igre = self.prost_id_igre()
+        self.igre[id_igre] = (igra, ZACETEK)
+        return id_igre
+
+    def ugibaj(self, id_igre, crka):
+        ugibaj = self.igre[id_igre][0].ugibaj(crka)
+        self.igre[id_igre] = (igra, ugibaj)
