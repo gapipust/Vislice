@@ -22,22 +22,22 @@ def zahtevaj_vnos():
     return crka.upper()
 
 def pozeni_vmesnik():
-    igra = nova_igra()
+    igra = model.nova_igra()
     while True:
         crka = zahtevaj_vnos()
         rezultat = igra.ugibaj(crka)
-        if rezultat == PONOVLJENA_CRKA:
+        if rezultat == model.PONOVLJENA_CRKA:
             print("Ta črka je že bila izbrana. Izberite drugo črko!")
             izpis_igre(igra)
-        elif rezultat == ZMAGA:
+        elif rezultat == model.ZMAGA:
             izpis_zmage(igra)
             break
-        elif rezultat == PORAZ:
+        elif rezultat == model.PORAZ:
             izpis_poraza(igra)
             break
-        elif rezultat == PRAVILNA_CRKA:
+        elif rezultat == model.PRAVILNA_CRKA:
             igra.pravilne_crke().append(crka)
             izpis_igre(igra)
-        elif rezultat == NAPACNA_CRKA:
+        elif rezultat == model.NAPACNA_CRKA:
             igra.napacne_crke().append(crka)
             izpis_igre(igra)
