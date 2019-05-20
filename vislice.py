@@ -7,16 +7,17 @@ vislice = Vislice()
 def index():
     return bottle.template("index.tpl")
 
-@bottle.get("/igra/<id_igre>/")
+@bottle.post("/igra/")
 def nova_igra():
     id_igre = vislice.nova_igra()
-    return id_igre
+    bottle.redirect("/igra/{}".format(id_igre))
+
+@bottle.get("/igra/<id_igre:int>/")
+def pokazi_igro(id_igre):
+    igra, poskus = vislice.igre[id_igre]
+    return bottle.template("igra.tpl", id_igre=id_igre, igra=igra, poskus=poskus)    
 
 @bottle.post("/igra/<id_igre:int>/")
-def pokazi_igro():
-    
-
-@bottle.post("/igra/<id_igre:int>/")
-def ugibaj()
+def ugibaj():
 
 bottle.run(reloader=True, debug=True)
