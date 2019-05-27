@@ -61,7 +61,8 @@ class Igra:
         velika_crka = crka.upper()
         if velika_crka in self.crke:
             return PONOVLJENA_CRKA
-        elif velika_crka in self.geslo:
+        self.crke.append(velika_crka)
+        if velika_crka in self.geslo:
             if self.zmaga():
                 return ZMAGA
             else:
